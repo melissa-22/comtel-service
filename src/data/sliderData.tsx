@@ -12,7 +12,7 @@ export const sliderData = [
                         <div className="flex gap-2 mb-5">
                             <p className="text-xl font-bold">Даём гарантию</p><span className="text-orange text-xl font-bold">3 месяца</span>
                         </div>
-                        <ComtelLink path='/123' outline background='bg-orange' text='Узнать стоимость ремонта' />
+                        <ComtelLink  path='/#prices' outline background='bg-orange' text='Узнать стоимость ремонта' />
                     </div>,
         'image': slide1,
     },

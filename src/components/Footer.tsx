@@ -8,7 +8,7 @@ import vk from '../assets/social-icons/vk.svg';
 
 const Footer = () => {
     return (
-        <div className="min-h-screen bg-black flex justify-end flex-col">
+        <div id='contacts' className="min-h-screen bg-black flex justify-end flex-col">
             <h2 className="text-center text-4xl text-white font-bold font-mont xl:text-6xl mb-10">Контакты</h2>
             <div className='flex flex-col text-white lg:flex-row'>
                 <div className='h-96 px-4 lg:px-0 w-full lg:w-7/12 lg:h-[700px]'>

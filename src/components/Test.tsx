@@ -3,10 +3,18 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import {brandsData} from "../data/brandsData.ts";
 import ComtelBrand from "./ui/ComtelBrand.tsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import './Test.css';
 import {useCalculatorStore} from "../store/useCalculatorStore.ts";
 import ComtelButton from "./ui/ComtelButton.tsx";
+import samsung from "../assets/mobilePhotos/samsungTel.png";
+import iphone from "../assets/mobilePhotos/iphoneTel.png";
+import huawei from "../assets/mobilePhotos/huaweiTel.png";
+import honor from "../assets/mobilePhotos/honorTel.png";
+import xiaomi from "../assets/mobilePhotos/xiaomiTel.png";
+import {createPortal} from "react-dom";
+import ModalWindow from "./ModalWindow.tsx";
+
 
 export default function ToggleButtons() {
     const brand = useCalculatorStore(state => state.brand);
@@ -31,11 +39,21 @@ export default function ToggleButtons() {
         if (!model || !series || !brand) return
 
         if (brand === 'Samsung') {
-            return 'https://www.vhv.rs/dpng/d/204-2044518_samsung-clear-cover-for-galaxy-s8-plus-samsung.png';
+            return samsung;
         }
         if (brand === 'Apple') {
-            return '';
+            return iphone;
         }
+        if (brand === 'Huawei') {
+            return huawei;
+        }
+        if (brand === 'Honor') {
+            return honor;
+        }
+        if (brand === 'Xiaomi') {
+            return xiaomi;
+        }
+
     }
     useEffect(() => {
         console.log(`brand is ${brand}`)
@@ -64,6 +82,10 @@ export default function ToggleButtons() {
         setModel(newModel);
     }
 
+    const [test, setTest] = useState<boolean>(false)
+    const testHandler = () => {
+        setTest(prevState => !prevState)
+    }
 
 
     return (
@@ -148,7 +170,13 @@ export default function ToggleButtons() {
                                         </div>
                                     ))
                                 }
-                                <ComtelButton background='bg-orange' text='Записаться на ремонт' />
+                                <ComtelButton onClick={testHandler} background='bg-orange' text='Записаться на ремонт'/>
+                                {
+                                    test && createPortal(
+                                        <div className='fixed h-screen w-screen z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
+                                }
+
+
                             </div>
                         </div>
                     </div>
