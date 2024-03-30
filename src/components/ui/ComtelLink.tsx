@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {ComtelButtonProps} from "./ComtelButton.tsx";
-import {Link} from "react-router-dom";
+import {HashLink as Link} from "react-router-hash-link";
 
 interface ComtelLinkProps extends ComtelButtonProps{
     path: string

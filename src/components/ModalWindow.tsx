@@ -95,7 +95,7 @@ const ModalWindow: FC<ModalWindowProps> = ({visibility, close}) => {
             <div className="flex lg:w-9/12">
                 <button className='text-white' onClick={close}><img className="h-10 w-10 absolute top-3 right-3 z-[52]" src={cross}/></button>
                 <div className="w-full flex flex-col justify-center gap-10 lg:w-[100%]  h-[100vh] lg:h-[55vh] py-4 rounded-bl-3xl rounded-tl-3xl lg:rounded-bl-none lg:rounded-tl-none rounded-tr-3xl rounded-br-3xl">
-                    <form className="flex flex-col items-center px-4" action="">
+                    <form className="flex flex-col items-center px-4 lg:px-0" action="">
                         {nameError && <p className="text-black font-medium self-start">{nameError}</p>}
                         <input className="w-full h-10 bg-zinc-200 rounded-xl pl-10 shadow-sm border border-zinc-300 font-mont placeholder:text-zinc-500 my-1"
                                placeholder="Имя"

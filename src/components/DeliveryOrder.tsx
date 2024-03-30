@@ -1,9 +1,10 @@
 import delivery from '../assets/delivery.webp';
 import useInput from "../hooks/useInput.ts";
-import {useEffect, useState} from "react";
+import {SyntheticEvent, useEffect, useState} from "react";
 import useDebounce from "../hooks/useDebounce.ts";
 import {Link} from "react-router-dom";
 import ComtelButton from "./ui/ComtelButton.tsx";
+import axios from "axios";
 const DeliveryOrder = () => {
 
     const name = useInput('', {isEmpty: true, minLength: 3});
@@ -13,11 +14,35 @@ const DeliveryOrder = () => {
     const [formIsValid, setFormIsValid] = useState(false);
     const [check, setCheck] = useState(false);
 
-    // const clearValues = () => {
-    //     name.clearValue()
-    //     phone.clearValue()
-    // }
+    const clearValues = () => {
+        name.clearValue()
+        phone.clearValue()
+    }
+    const data = `
+        name: ${name.value}
+        phone: ${phone.value}
+    `
+    const sendMessage = (e: SyntheticEvent) => {
+        e.preventDefault();
+        console.log(data);
+        const baseUrl = 'https://api.telegram.org/bot';
+        const token = '7054402811:AAG0YIDg8JafR-8kufT5mInou47QIpIS89o';
+        const chatId = '-4136555670';
+        const method = '/sendMessage';
+        const text = data;
+        const url = baseUrl + token + method + '?chat_id=' + chatId + '&text=' + text;
 
+        clearValues();
+
+        axios.get(url)
+            .then(res => {
+                if (res.status == 200) {
+                    console.log('успешно ' + res.data);
+                } else if (res.status == 400) {
+                    console.log('ошибка ' + res.data)
+                }
+            })
+    }
     const nameValidator = () => {
         if (!name.isDirty) return
 
@@ -85,7 +110,7 @@ const DeliveryOrder = () => {
                             <input onClick={() => setCheck(prevState => !prevState)} className="w-4 h-4 accent-black focus:ring-blue-500 mr-3" type="checkbox"/>
                             <span>Даю согласие на обработку <Link to='/privacy' className="font-bold">персональных данных</Link></span>
                         </label>
-                        <ComtelButton size='!w-full' disabled={!formIsValid} background='bg-black' text='Отправить' />
+                        <ComtelButton size='!w-full' disabled={!formIsValid} background='bg-black' text='Отправить' onClick={sendMessage}/>
                     </form>
                     <Link className="text-center" to='/delivery-term' >Условия доставки</Link>
                 </div>

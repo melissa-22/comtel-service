@@ -3711,7 +3711,7 @@ export const brandsData = [
         ]
     },
     {
-        "name": 'xiaomi',
+        "name": 'Xiaomi',
         "img": `${xiaomi}`,
         "series": [
             {
