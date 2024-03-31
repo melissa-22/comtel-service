@@ -15,7 +15,7 @@ const Footer = () => {
                     <YandexMap />
                 </div>
                 <div className='px-4 font-mont lg:w-5/12 flex flex-col lg:h-[700px] justify-start'>
-                    <h4 className='text-xl text-center my-2 lg:my-0 lg:text-left'>Рады пригласить вас в наш сервисный центр, где мы предлагаем широкий спектр услуг по ремонту и обслуживанию вашей техники.</h4>
+                    <h4 className='text-xl text-center my-2 lg:my-0 lg:text-left'>Рады пригласить Вас в наш сервисный центр, где мы предлагаем широкий спектр услуг по ремонту и обслуживанию Вашей техники.</h4>
                     <div className='flex flex-col'>
                         <img className='rounded-3xl w-full h-80 object-cover' src={office} alt=""/>
                         <div>
