@@ -3,7 +3,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import {brandsData} from "../data/brandsData.ts";
 import ComtelBrand from "./ui/ComtelBrand.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import './Test.css';
 import {useCalculatorStore} from "../store/useCalculatorStore.ts";
 import ComtelButton from "./ui/ComtelButton.tsx";
@@ -55,12 +55,7 @@ export default function ToggleButtons() {
         }
 
     }
-    useEffect(() => {
-        console.log(`brand is ${brand}`)
-        console.log(`series is ${series}`)
-        console.log(`model is ${model}`)
-        console.log(info);
-    }, [brand, series, model, info]);
+
     const handleBrand = (
         _event: React.MouseEvent<HTMLElement>,
         newBrand: string,
@@ -83,15 +78,15 @@ export default function ToggleButtons() {
     }
 
     const [test, setTest] = useState<boolean>(false)
+
     const testHandler = () => {
         setTest(prevState => !prevState)
     }
 
-
     return (
         <>
-            <div className='bg-orange w-full h-12 rounded-t-3xl text-center text-base flex items-center justify-center text-white lg:text-2xl font-semibold font-mont'>Выберите
-                бренд устройства
+            <div className='bg-orange w-full h-12 rounded-t-3xl text-center text-base flex items-center justify-center text-white lg:text-2xl font-semibold font-mont'>
+                Выберите бренд устройства
             </div>
             <div className='bg-zinc-900 w-full h-fit rounded-b-3xl flex flex-col gap-5 justify-evenly items-center'>
                 <ToggleButtonGroup
@@ -99,11 +94,11 @@ export default function ToggleButtons() {
                     exclusive
                     onChange={handleBrand}
                     aria-label="text brands"
-                    className='p-5 !flex flex-wrap gap-2 justify-between border-x-0 border-t-0 border-b-white border'
+                    className='p-5 !flex flex-wrap gap-2 justify-between border border-x-0 border-t-0 border-b-white '
                 >
                     {
                         brandsData.map(brand => (
-                            <ToggleButton className='w-5/12 lg:w-[15%]' onClick={() => {
+                            <ToggleButton className='w-5/12 lg:w-[15%] hover:!bg-orange !border-none !rounded-3xl hover:duration-500' onClick={() => {
                                 setSeries('');
                                 setModel('');
                                 setSeriesArray(brand.series)

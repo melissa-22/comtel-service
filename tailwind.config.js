@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'mont': ['Montserrat', 'sans-serif'],
+        'europe': ['Europe', 'sans-serif']
       },
       colors: {
         'orange': '#FF6600'

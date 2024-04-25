@@ -5,6 +5,7 @@ import useDebounce from "../hooks/useDebounce.ts";
 import {Link} from "react-router-dom";
 import ComtelButton from "./ui/ComtelButton.tsx";
 import axios from "axios";
+import {useNotification} from "../store/useNotification.ts";
 const DeliveryOrder = () => {
 
     const name = useInput('', {isEmpty: true, minLength: 3});
@@ -14,6 +15,7 @@ const DeliveryOrder = () => {
     const [formIsValid, setFormIsValid] = useState(false);
     const [check, setCheck] = useState(false);
 
+    const open = useNotification(state => state.open)
     const clearValues = () => {
         name.clearValue()
         phone.clearValue()
@@ -36,11 +38,10 @@ const DeliveryOrder = () => {
 
         axios.get(url)
             .then(res => {
-                if (res.status == 200) {
-                    console.log('успешно ' + res.data);
-                } else if (res.status == 400) {
-                    console.log('ошибка ' + res.data)
-                }
+                res.status === 200 && open(res.status)
+            })
+            .catch(e => {
+                open(e.response.status)
             })
     }
     const nameValidator = () => {

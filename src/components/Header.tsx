@@ -7,6 +7,7 @@ import ModalWindow from "./ModalWindow.tsx";
 import useOveflow from "../hooks/useOveflow.ts";
 import {createPortal} from "react-dom";
 
+
 const NavLinks = [
     {label: 'Цены', href: '/#prices'},
     {label: 'О нас', href: '/#about'},
@@ -57,7 +58,7 @@ const Header = () => {
                     test && createPortal(
                       <div className='fixed h-screen w-screen z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
                 }
-                <button></button>
+
                 <div className="flex flex-col items-center">
                     <p className="text-white font-semibold font-mont xl:text-xl">Свяжитесь с нами</p>
                     <a className="font-semibold hover:text-white" href='tel:+79053336969'>+7 (905) 333-69-69</a>
