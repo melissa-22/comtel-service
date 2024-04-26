@@ -3,8 +3,8 @@ import {achievementsData} from "../data/achievementsData.ts";
 const Achievements = () => {
 
     return (
-        <div className="min-h-screen pb-10 bg-black flex flex-col justify-evenly">
-            <h2 className="text-center text-4xl text-white font-bold font-mont xl:text-6xl px-4 mb-10">Наши достижения</h2>
+        <div className="min-h-screen pb-10 flex flex-col justify-evenly">
+            <h2 className="text-center text-4xl font-bold font-mont xl:text-6xl px-4 mb-10">Наши достижения</h2>
             <div className="flex flex-col-reverse lg:flex-row items-center justify-center w-full">
                 <div className="w-full lg:w-5/12 h-[800px] overflow-hidden relative px-4">
                     <iframe style={{width: '100%', height: '100%', border: '1px solid #e6e6e6', borderRadius: '8px', boxSizing: 'border-box'}} src="https://yandex.ru/maps-reviews-widget/91079519059?comments"></iframe>

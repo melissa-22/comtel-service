@@ -5,7 +5,6 @@ import DeliveryOrder from "../components/DeliveryOrder.tsx";
 import Questions from "../components/Questions.tsx";
 import Calculator from "../components/Calculator.tsx";
 
-
 const Main = () => {
     return (
         <>

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Europe';
+    src: url('EuropeBold.woff2') format('woff2'),
+        url('EuropeBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
