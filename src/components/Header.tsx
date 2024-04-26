@@ -6,6 +6,10 @@ import closedIcon from '../assets/navClosedIcon.svg';
 import ModalWindow from "./ModalWindow.tsx";
 import useOveflow from "../hooks/useOveflow.ts";
 import {createPortal} from "react-dom";
+import Telegram from "./icons/social/Telegram.tsx";
+import Vk from "./icons/social/Vk.tsx";
+import WhatsApp from "./icons/social/WhatsApp.tsx";
+import {useScrollPosition} from "../hooks/useScrollPosition.ts";
 
 
 const NavLinks = [
@@ -15,13 +19,13 @@ const NavLinks = [
     {label: 'Вопросы', href: '/#questions'},
 ]
 const Header = () => {
+    const scrollPosition = useScrollPosition();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [test, setTest] = useState<boolean>(false);
     useOveflow(isOpen)
 
     const testHandler = () => {
         setTest(prevState => !prevState)
-        console.log(String(test))
     }
 
     useEffect(() => {
@@ -37,9 +41,9 @@ const Header = () => {
     }
 
     return (
-        <header className="bg-orange">
+        <header className={`bg-orange z-50 duration-500 sticky top-0 rounded-b-lg ${scrollPosition > 20 ? '-mt-16' : 'bg-transparent -mt-20'}`}>
             {/*пк версия*/}
-            <nav className="hidden h-[10vh] w-full lg:flex justify-center gap-10 items-center bg-milk">
+            <nav className="hidden h-[10vh] w-full lg:flex justify-center gap-10 items-center">
                 <div className="w-20">
                     <Logo/>
                 </div>
@@ -56,12 +60,17 @@ const Header = () => {
                 <ComtelButton onClick={testHandler} padding="py-2 px-10" size="text-xl" background='bg-black' text='Заказать доставку'/>
                 {
                     test && createPortal(
-                      <div className='fixed h-screen w-screen z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
+                      <div className='fixed h-screen w-screen backdrop-brightness-75 backdrop-blur z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
                 }
 
                 <div className="flex flex-col items-center">
                     <p className="text-white font-semibold font-mont xl:text-xl">Свяжитесь с нами</p>
-                    <a className="font-semibold hover:text-white" href='tel:+79053336969'>+7 (905) 333-69-69</a>
+                    <a className={`font-semibold text-xl text-white ${scrollPosition > 20 ? 'hover:text-black' : 'hover:text-orange'} duration-300`} href='tel:+79053336969'>+7 (905) 333-69-69</a>
+                </div>
+                <div className='xl:flex gap-2 hidden'>
+                    <Telegram className={`${scrollPosition > 20 ? 'hover:fill-black' : 'hover:fill-orange'} `} height={40} width={40} color='white' />
+                    <WhatsApp className={`${scrollPosition > 20 ? 'hover:fill-black' : 'hover:fill-orange'} `} height={40} width={40} color='white' />
+                    <Vk className={`${scrollPosition > 20 ? 'hover:fill-black' : 'hover:fill-orange'} `} height={40} width={40} color='white' />
                 </div>
             </nav>
             <button
@@ -92,7 +101,6 @@ const Header = () => {
                             <a className="font-semibold hover:text-white" href='tel:+79053336969'>+7 (905) 333-69-69</a>
                         </div>
                         <ComtelButton onClick={testHandler} size="text-xl" background='bg-black' text='Заказать доставку'/>
-
                     </div>
                 </div>
             </nav>

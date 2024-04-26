@@ -9,10 +9,9 @@
 .MuiToggleButton-secondary:hover {
     background: #ff6600 !important;
     transition-duration: .5s;
-
 }
 
 .MuiToggleButton-root.Mui-selected {
     background: #ff6600 !important;
-    border-radius: 24px !important;
+    font-weight: 600;
 }

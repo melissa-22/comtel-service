@@ -3,20 +3,18 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import {brandsData} from "../data/brandsData.ts";
 import ComtelBrand from "./ui/ComtelBrand.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './Test.css';
 import {useCalculatorStore} from "../store/useCalculatorStore.ts";
 import ComtelButton from "./ui/ComtelButton.tsx";
-import samsung from "../assets/mobilePhotos/samsungTel.png";
-import iphone from "../assets/mobilePhotos/iphoneTel.png";
-import huawei from "../assets/mobilePhotos/huaweiTel.png";
-import honor from "../assets/mobilePhotos/honorTel.png";
-import xiaomi from "../assets/mobilePhotos/xiaomiTel.png";
 import {createPortal} from "react-dom";
 import ModalWindow from "./ModalWindow.tsx";
 
 
 export default function ToggleButtons() {
+
+    const type = useCalculatorStore(state => state.type);
+
     const brand = useCalculatorStore(state => state.brand);
     const setBrand = useCalculatorStore(state => state.setBrand);
 
@@ -35,26 +33,17 @@ export default function ToggleButtons() {
     const info = useCalculatorStore(state => state.info);
     const setInfo = useCalculatorStore(state => state.setInfo);
 
-    const imageHandler = () => {
-        if (!model || !series || !brand) return
+    const [image, setImage] = useState();
 
-        if (brand === 'Samsung') {
-            return samsung;
+    useEffect(() => {
+        console.log('type is ' + type)
+        console.log('brand is ' + brand)
+        console.log('series is ' + series)
+        if (info) {
+            console.log('info is ' + info[0])
         }
-        if (brand === 'Apple') {
-            return iphone;
-        }
-        if (brand === 'Huawei') {
-            return huawei;
-        }
-        if (brand === 'Honor') {
-            return honor;
-        }
-        if (brand === 'Xiaomi') {
-            return xiaomi;
-        }
-
-    }
+        console.log(image)
+    }, [info]);
 
     const handleBrand = (
         _event: React.MouseEvent<HTMLElement>,
@@ -112,7 +101,6 @@ export default function ToggleButtons() {
                 {
                     brand != null &&
                     <>
-                        {/*<p className='text-white font-bold font-mont'>Выберите серию</p>*/}
                         <ToggleButtonGroup
                             value={series}
                             exclusive
@@ -141,8 +129,12 @@ export default function ToggleButtons() {
                     >
                         {
                             modelArray.map(model => (
-                                // @ts-ignore
-                                <ToggleButton onClick={() => setInfo(model.prices)} color='secondary' value={model.name}>
+                                <ToggleButton onClick={() => {
+                                    // @ts-ignore
+                                    setInfo(model.prices)
+                                    // @ts-ignore
+                                    setImage(model.img)
+                                }} color='secondary' value={model.name}>
                                     <button className='h-10 w-2/12 min-w-fit'>{model.name}</button>
                                 </ToggleButton>
                             ))
@@ -155,7 +147,7 @@ export default function ToggleButtons() {
                         <div className='w-11/12 border-x-0 border-t-white border-b-0 border pt-10 py-5 flex flex-col lg:flex-row gap-2 animate-show'>
 
                             <div className='bg-transparent lg:w-5/12'>
-                                <img className='h-fit rounded-3xl' src={imageHandler()} alt=""/>
+                                <img className='h-fit rounded-3xl' src={image} loading='lazy' alt=""/>
                             </div>
                             <div className='flex flex-col lg:w-7/12 gap-2'>
                                 {
@@ -168,7 +160,7 @@ export default function ToggleButtons() {
                                 <ComtelButton onClick={testHandler} background='bg-orange' text='Записаться на ремонт'/>
                                 {
                                     test && createPortal(
-                                        <div className='fixed h-screen w-screen z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
+                                        <div className='fixed h-screen w-screen backdrop-brightness-75 backdrop-blur z-[52] top-0 lg:flex lg:items-center lg: justify-center'><ModalWindow visibility={test} close={testHandler}/></div>  , document.body)
                                 }
 
 

@@ -183,8 +183,6 @@ export const CONSTANTES = {
     '2290': '2290',
     '7890': '7890',
 
-
-
 }
 export const brandsData = [
     {
@@ -196,6 +194,7 @@ export const brandsData = [
                 models: [
                     {
                         name: 'A04',
+                        img: 'https://cdn.citilink.ru/SFpByQ79A8b_bzFclMfymZV4FUrupjOIpHoZ2bJKBpw/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/932e0f3c-cbf8-4720-91af-231171776503.jpg',
                         prices: [
                             {name: 'Диагностика', price: CONSTANTES.free},
                             {name: 'Чистка динамиков/разъемов', price: CONSTANTES.free},
@@ -222,20 +221,8 @@ export const brandsData = [
                             {name: 'Восстановление ПО', price: CONSTANTES["990"]},
                         ],
                     },
-                    {
-                        name: 'A04S',
-                        prices: [
-                            {name: 'Диагностика', price: CONSTANTES.free},
-                            {name: 'Чистка динамиков/разъемов', price: CONSTANTES.free},
-                            {name: 'Замена аккумулятора', price: CONSTANTES["1890"]},
-                            {name: 'Замена разъема зарядки', price: CONSTANTES["1390"]},
-                            {name: 'Замена разбитого стекла', price: CONSTANTES.suggest},
-                            {name: 'Замена дисплея', price: CONSTANTES.suggest},
-                            {name: 'Замена задней крышки', price: CONSTANTES["1390"]},
-                            {name: 'Разблокировка FRP', price: CONSTANTES["1190"]},
-                            {name: 'Восстановление ПО', price: CONSTANTES["990"]},
-                        ],
-                    },
+                    
+
                     {
                         name: 'A03',
                         prices: [

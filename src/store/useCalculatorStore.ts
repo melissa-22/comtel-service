@@ -2,6 +2,7 @@ import {create} from "zustand";
 import {brandsData} from "../data/brandsData.ts";
 
 interface useCalculatorStoreProps {
+    type: string
     brand: string
     series: string
     seriesArray: {
@@ -11,6 +12,7 @@ interface useCalculatorStoreProps {
     model: string
     modelArray: {
         name: string
+        img: string
         prices: {
             name: string,
             price: string,
@@ -27,6 +29,7 @@ interface useCalculatorStoreProps {
     setModelArray: (
         modelArray: {
             name: string
+            img: string
             prices: {
                 name: string
                 price: string
@@ -43,6 +46,7 @@ interface useCalculatorStoreProps {
 }
 
 export const useCalculatorStore = create<useCalculatorStoreProps>((set) => ({
+    type: 'Smartphones',
     brand: 'Samsung',
     series: '',
     seriesArray: brandsData[0].series,
@@ -76,6 +80,7 @@ export const useCalculatorStore = create<useCalculatorStoreProps>((set) => ({
     },
     setModelArray: (modelArray: {
                         name: string
+                        img: string
                         prices: {
                             name: string
                             price: string

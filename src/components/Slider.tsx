@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 
 const Slider = () => {
     return (
-        <Swiper className="h-svh lg:h-[92vh]"
+        <Swiper className="h-svh lg:h-lvh"
                 slidesPerView={1}
                 modules={[Navigation, Pagination]}
                 navigation
@@ -19,8 +19,8 @@ const Slider = () => {
                     <SwiperSlide>
                         <figure>
                             <figcaption
-                                className="flex flex-col justify-center items-center h-svh w-screen lg:h-[92vh] px-4 lg:px-0 relative">
-                                <img className="absolute -z-10 w-full h-full object-cover" src={slide.image} alt=""/>
+                                className="flex flex-col justify-center items-center h-svh w-screen lg:h-lvh px-4 lg:px-0 relative">
+                                <img className="absolute -z-10 w-full h-full object-cover brightness-75 blur-sm" src={slide.image} alt=""/>
                                 {slide.content}
                             </figcaption>
                         </figure>

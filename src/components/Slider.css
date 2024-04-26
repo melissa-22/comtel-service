@@ -1,10 +1,19 @@
 .swiper-button-prev,
 .swiper-button-next {
     color: #ff6600 !important;
+
+}
+
+.swiper-pagination-bullet {
+    width: 16px !important;
+    height: 16px !important;
+    transition-duration: .3s;
 }
 
 .swiper-pagination-bullet-active {
     background: #ff6600 !important;
+    width: 20px !important;
+    height: 20px !important;
 }
 
 @media screen and (max-width: 1024px) {

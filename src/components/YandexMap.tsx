@@ -3,10 +3,11 @@ import {Map, Placemark, YMaps} from "@pbe/react-yandex-maps";
 const YandexMap = () => {
     return (
         <YMaps>
-            <Map width='100%' height='100%' defaultState={{
+            <Map style={{width: '100%', height: '100%', borderTopRightRadius: '16px'}} defaultState={{
                 center: [48.765523, 44.811192],
                 zoom: 16,
                 controls: ['zoomControl', 'fullscreenControl'],
+                behaviors: ['drag'],
             }}
                 modules={['control.ZoomControl', 'control.FullscreenControl']}
             >

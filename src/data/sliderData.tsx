@@ -1,6 +1,8 @@
 import slide1 from '../assets/slides/slide1.webp';
 import slide2 from '../assets/slides/slide2.webp';
 import ComtelLink from "../components/ui/ComtelLink.tsx";
+// const slide1 = 'https://images.unsplash.com/photo-1592659762303-90081d34b277?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+// const slide2 = 'https://images.unsplash.com/photo-1549194388-f61be84a6e9e?q=80&w=1772&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const sliderData = [
     {
         'content' : <div className="text-white font-mont flex flex-col gap-1 mb-5">
