@@ -8,6 +8,8 @@
     width: 16px !important;
     height: 16px !important;
     transition-duration: .3s;
+    background: white !important;
+    opacity: 1 !important;
 }
 
 .swiper-pagination-bullet-active {

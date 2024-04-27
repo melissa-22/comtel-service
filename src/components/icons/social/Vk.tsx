@@ -1,6 +1,6 @@
 const Vk = (props: { width: number, height: number, className: string, color: string }) => {
     return (
-        <svg fill={props.color} className={`${props.className} hover:cursor-pointer`}
+        <svg fill={props.color} className={`${props.className} hover:cursor-pointer duration-500`}
              width={props.width} height={props.height}
              xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 532.337 532.337">

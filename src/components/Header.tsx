@@ -50,7 +50,7 @@ const Header = () => {
                 {NavLinks.map(nav => (
                     <Link
                         key={`navigation${nav.href}`}
-                        className="p-2 rounded text-white font-semibold hover:text-black duration-300 font-mont xl:text-xl"
+                        className={`p-2 rounded text-white font-semibold duration-300 font-mont xl:text-xl ${scrollPosition > 20 ? 'hover:text-black' : 'hover:text-orange'}`}
                         to={nav.href}
                         onClick={() => setIsOpen(false)}
                     >
